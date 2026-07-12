@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: int_order_details
+    description: "Business-ready dataset combining orders, customers, products, sellers, and payments."

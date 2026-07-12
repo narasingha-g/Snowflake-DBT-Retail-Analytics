@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Standardized customer data from the Bronze layer."
+
+    columns:
+      - name: CUSTOMER_ID
+        description: "Primary key for the customer."
+        tests:
+          - unique
+          - not_null
+
+      - name: CUSTOMER_UNIQUE_ID
+        description: "Unique customer identifier."
+
+      - name: CUSTOMER_CITY
+        description: "Customer city in uppercase."
+
+      - name: CUSTOMER_STATE
+        description: "Customer state abbreviation."

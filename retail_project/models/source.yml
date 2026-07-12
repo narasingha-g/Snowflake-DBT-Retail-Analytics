@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: bronze
+    database: PORTFOLIO_DB
+    schema: BRONZE
+
+    tables:
+      - name: CUSTOMERS
+      - name: ORDERS
+      - name: ORDER_ITEMS
+      - name: PRODUCTS
+      - name: SELLERS
+      - name: ORDER_PAYMENTS

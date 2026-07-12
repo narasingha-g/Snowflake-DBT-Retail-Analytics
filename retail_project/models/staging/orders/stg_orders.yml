@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Standardized order data from the Bronze layer."
+
+    columns:
+      - name: ORDER_ID
+        description: "Primary key for each order."
+        tests:
+          - unique
+          - not_null
+
+      - name: CUSTOMER_ID
+        description: "Customer who placed the order."
+        tests:
+          - not_null
+
+      - name: ORDER_STATUS
+        description: "Current order status."
+
+      - name: ORDER_PURCHASE_TIMESTAMP
+        description: "Timestamp when the order was placed."
+
+      - name: ORDER_APPROVED_AT
+        description: "Timestamp when the order was approved."
+
+      - name: ORDER_DELIVERED_CARRIER_DATE
+        description: "Date when the carrier received the order."
+
+      - name: ORDER_DELIVERED_CUSTOMER_DATE
+        description: "Date when the customer received the order."
+
+      - name: ORDER_ESTIMATED_DELIVERY_DATE
+        description: "Estimated delivery date."

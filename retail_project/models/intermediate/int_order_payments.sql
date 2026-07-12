@@ -1,0 +1,11 @@
+SELECT
+
+    ORDER_ID,
+
+    SUM(PAYMENT_VALUE) AS TOTAL_PAYMENT,
+
+    COUNT(*) AS NUMBER_OF_PAYMENTS
+
+FROM {{ ref('stg_order_payments') }}
+
+GROUP BY ORDER_ID

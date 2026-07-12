@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: stg_products
+    description: "Standardized product information."
+
+    columns:
+      - name: PRODUCT_ID
+        description: "Primary key for the product."
+        tests:
+          - unique
+          - not_null
+
+      - name: PRODUCT_CATEGORY_NAME
+        description: "Product category."
+
+      - name: PRODUCT_NAME_LENGTH
+        description: "Length of the product name."
+
+      - name: PRODUCT_DESCRIPTION_LENGTH
+        description: "Length of the product description."
+
+      - name: PRODUCT_PHOTOS_QTY
+        description: "Number of product photos."
+
+      - name: PRODUCT_WEIGHT_G
+        description: "Product weight in grams."
+
+      - name: PRODUCT_LENGTH_CM
+        description: "Product length in centimeters."
+
+      - name: PRODUCT_HEIGHT_CM
+        description: "Product height in centimeters."
+
+      - name: PRODUCT_WIDTH_CM
+        description: "Product width in centimeters."

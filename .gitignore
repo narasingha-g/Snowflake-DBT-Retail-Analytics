@@ -1,0 +1,23 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# dbt
+target/
+logs/
+dbt_packages/
+
+# VS Code
+.vscode/
+
+# Local configuration
+*.log
+.env
+
+# Snowflake credentials
+profiles.yml
+
+# OS
+.DS_Store
+Thumbs.db

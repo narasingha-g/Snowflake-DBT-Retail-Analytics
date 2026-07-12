@@ -1,0 +1,23 @@
+SELECT
+
+    o.ORDER_ID,
+    o.CUSTOMER_ID,
+    o.ORDER_STATUS,
+    o.ORDER_PURCHASE_TIMESTAMP,
+    o.ORDER_APPROVED_AT,
+    o.ORDER_DELIVERED_CARRIER_DATE,
+    o.ORDER_DELIVERED_CUSTOMER_DATE,
+    o.ORDER_ESTIMATED_DELIVERY_DATE,
+
+    oi.ORDER_ITEM_ID,
+    oi.PRODUCT_ID,
+    oi.SELLER_ID,
+    oi.PRICE,
+    oi.FREIGHT_VALUE,
+
+    (oi.PRICE + oi.FREIGHT_VALUE) AS TOTAL_ITEM_AMOUNT
+
+FROM {{ ref('stg_orders') }} o
+
+LEFT JOIN {{ ref('stg_order_items') }} oi
+ON o.ORDER_ID = oi.ORDER_ID

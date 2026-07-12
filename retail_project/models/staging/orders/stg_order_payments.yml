@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_order_payments
+    description: "Standardized payment information."
+
+    columns:
+      - name: ORDER_ID
+        description: "Order identifier."
+        tests:
+          - not_null
+
+      - name: PAYMENT_SEQUENTIAL
+        description: "Payment sequence number."
+
+      - name: PAYMENT_TYPE
+        description: "Payment method."
+
+      - name: PAYMENT_INSTALLMENTS
+        description: "Number of installments."
+
+      - name: PAYMENT_VALUE
+        description: "Payment amount."

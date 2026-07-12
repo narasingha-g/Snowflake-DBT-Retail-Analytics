@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_sellers
+    description: "Standardized seller information."
+
+    columns:
+      - name: SELLER_ID
+        description: "Primary key for the seller."
+        tests:
+          - unique
+          - not_null
+
+      - name: SELLER_ZIP_CODE_PREFIX
+        description: "Seller ZIP code prefix."
+
+      - name: SELLER_CITY
+        description: "Seller city."
+
+      - name: SELLER_STATE
+        description: "Seller state."

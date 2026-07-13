@@ -94,15 +94,24 @@ Analytics / BI Reporting
 ✅ dbt-utils package integration
 
 
-## In Progress
 
-🚧 Gold dimensional models
+## Gold Layer
 
-🚧 Incremental fact tables
+### Dimensions
 
-🚧 dbt documentation
+| Dimension | Status |
+|-----------|--------|
+| dim_customers | ✅ |
+| dim_products | ✅ |
+| dim_sellers | ✅ |
+| dim_date | ✅ |
 
-🚧 CI/CD pipeline
+### Upcoming
+
+- fact_orders (Incremental)
+- Star Schema
+- Relationship Tests
+- Analytics KPIs
 
 
 # Data Quality Decisions

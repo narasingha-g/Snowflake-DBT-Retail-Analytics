@@ -1,0 +1,22 @@
+version: 2
+
+models:
+
+  - name: dim_customers
+
+    description: >
+      Customer dimension containing customer attributes
+      used for analytical reporting.
+
+    columns:
+
+      - name: CUSTOMER_KEY
+        description: "Surrogate key for customer dimension."
+        tests:
+          - not_null
+          - unique
+
+      - name: CUSTOMER_ID
+        description: "Source customer identifier."
+        tests:
+          - not_null

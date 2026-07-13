@@ -41,5 +41,9 @@ models:
       +materialized: view
 
     marts:
-      +schema: GOLD
-      +materialized: table
+      dimensions:
+        +schema: GOLD
+        +materialized: table
+      facts:
+        +schema: GOLD
+        +materialized: table

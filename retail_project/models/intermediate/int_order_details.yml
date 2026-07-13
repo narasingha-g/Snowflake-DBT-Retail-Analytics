@@ -4,8 +4,11 @@ models:
   - name: int_order_details
 
     description: >
-      Business-ready order dataset combining orders,
-      customers, products, sellers and payment information.
+      Intermediate model combining orders, items,
+      payments, customers, products and sellers.
+
+      Grain: One record per order item.
+      Orders without items are retained.
 
     columns:
 
@@ -20,11 +23,7 @@ models:
           - not_null
 
       - name: PRODUCT_ID
-        description: "Product identifier."
-       
+        description: "Product identifier. Nullable for orders without items."
 
       - name: SELLER_ID
-        description: "Seller identifier."
-        
-      - name: TOTAL_ITEM_AMOUNT
-        description: "Total item price including freight."
+        description: "Seller identifier. Nullable for orders without items."

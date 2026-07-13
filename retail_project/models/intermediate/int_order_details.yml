@@ -2,4 +2,29 @@ version: 2
 
 models:
   - name: int_order_details
-    description: "Business-ready dataset combining orders, customers, products, sellers, and payments."
+
+    description: >
+      Business-ready order dataset combining orders,
+      customers, products, sellers and payment information.
+
+    columns:
+
+      - name: ORDER_ID
+        description: "Unique order identifier."
+        tests:
+          - not_null
+
+      - name: CUSTOMER_ID
+        description: "Customer identifier."
+        tests:
+          - not_null
+
+      - name: PRODUCT_ID
+        description: "Product identifier."
+       
+
+      - name: SELLER_ID
+        description: "Seller identifier."
+        
+      - name: TOTAL_ITEM_AMOUNT
+        description: "Total item price including freight."

@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: fact_orders
+    description: Enterprise sales fact table
+
+    columns:
+      - name: ORDER_ID
+        tests:
+          - not_null
+
+      - name: CUSTOMER_KEY
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_customers')
+                field: CUSTOMER_KEY
+
+      - name: PRODUCT_KEY
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_products')
+                field: PRODUCT_KEY
+              config:
+                where: "PRODUCT_KEY IS NOT NULL"
+
+      - name: SELLER_KEY
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_sellers')
+                field: SELLER_KEY
+              config:
+                where: "SELLER_KEY IS NOT NULL"
+
+      - name: DATE_KEY
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: DATE_KEY

@@ -1,0 +1,43 @@
+{{ config(
+    materialized='table'
+) }}
+
+SELECT
+
+    ds.SELLER_KEY,
+    ds.SELLER_ID,
+    ds.SELLER_CITY,
+    ds.SELLER_STATE,
+
+    COUNT(DISTINCT fs.ORDER_ID) AS TOTAL_ORDERS,
+
+    COUNT(*) AS TOTAL_ITEMS_SOLD,
+
+    ROUND(SUM(fs.TOTAL_ITEM_AMOUNT),2) AS TOTAL_REVENUE,
+
+    ROUND(AVG(fs.PRICE),2) AS AVG_ITEM_PRICE,
+
+    ROUND(AVG(fs.FREIGHT_VALUE),2) AS AVG_FREIGHT_COST,
+
+    ROUND(AVG(fs.DELIVERY_DAYS),2) AS AVG_DELIVERY_DAYS,
+
+    SUM(
+        CASE
+            WHEN fs.LATE_DELIVERY THEN 1
+            ELSE 0
+        END
+    ) AS LATE_DELIVERIES,
+
+    MAX(fs.ORDER_PURCHASE_TIMESTAMP) AS LAST_ORDER_DATE
+
+FROM {{ ref('dim_sellers') }} ds
+
+LEFT JOIN {{ ref('fact_sales') }} fs
+    ON ds.SELLER_KEY = fs.SELLER_KEY
+
+GROUP BY
+
+    ds.SELLER_KEY,
+    ds.SELLER_ID,
+    ds.SELLER_CITY,
+    ds.SELLER_STATE

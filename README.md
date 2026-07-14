@@ -10,38 +10,52 @@ This project demonstrates the design and implementation of a modern data warehou
 
 
 ## Architecture
-Source CSV Files
-        |
-        |
-        v
-+----------------+
-| Snowflake      |
-| Bronze Layer   |
-| RAW Schema     |
-+----------------+
-        |
-        |
-        v
-+----------------+
-| dbt Models     |
-| Silver Layer   |
-| STAGING        |
-| INTERMEDIATE   |
-+----------------+
-        |
-        |
-        v
-+----------------+
-| Gold Layer     |
-| Dimensions     |
-| Facts          |
-+----------------+
-        |
-        |
-        v
-Analytics / BI Reporting
+
+```mermaid
+flowchart LR
+
+A[CSV Files]
+
+A --> B[Snowflake Bronze]
+
+B --> C[dbt Staging]
+
+C --> D[Intermediate Models]
+
+D --> E[Gold Dimensions]
+
+D --> F[Gold Facts]
+
+E --> G[Reporting Marts]
+
+F --> G
+```
+## Repository Structure
 
 
+Snowflake-DBT-Retail-Analytics/
+
+│
+
+├── data/
+
+├── sql/
+
+├── retail_project/
+
+│ ├── models/
+
+│ ├── seeds/
+
+│ ├── snapshots/
+
+│ ├── tests/
+
+│ └── macros/
+
+├── README.md
+
+└── packages.yml
 
 # Technology Stack
 
@@ -55,64 +69,58 @@ Analytics / BI Reporting
 | Version Control      | GitHub    |
 
 
-# Current Implementation
+# Medallion Layers
 
-## Completed
+Instead of listing models randomly:
 
-✅ Snowflake database setup
+```markdown
+## Bronze Layer
 
-✅ Bronze raw ingestion layer
+- Raw CSV ingestion
+- External Stage
+- Internal Stage
+- File Format
+- Raw Tables
 
-✅ External/Internal stage configuration
+---
 
-✅ CSV file format configuration
+## Silver Layer
 
-✅ Raw tables creation
-
-✅ dbt staging models
+### Staging
 
 - stg_customers
 - stg_orders
-- stg_order_items
 - stg_products
 - stg_sellers
+- stg_order_items
 - stg_order_payments
 
-
-✅ dbt intermediate layer
+### Intermediate
 
 - int_order_details
 
-
-✅ Data quality tests
-
-- not_null tests
-- Duplicate validation
-- Data grain validation
-
-
-✅ dbt-utils package integration
-
-
+---
 
 ## Gold Layer
 
 ### Dimensions
 
-| Dimension | Status |
-|-----------|--------|
-| dim_customers | ✅ |
-| dim_products | ✅ |
-| dim_sellers | ✅ |
-| dim_date | ✅ |
+- dim_customers
+- dim_products
+- dim_sellers
+- dim_date
 
-### Upcoming
+### Facts
 
 - fact_orders (Incremental)
-- Star Schema
-- Relationship Tests
-- Analytics KPIs
+- fact_sales
 
+### Reporting
+
+- sales_summary
+- customer_360
+- product_performance
+- seller_performance
 
 # Data Quality Decisions
 

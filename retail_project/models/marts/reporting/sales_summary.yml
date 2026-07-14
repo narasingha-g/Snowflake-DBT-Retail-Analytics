@@ -1,0 +1,20 @@
+version: 2
+
+models:
+
+  - name: sales_summary
+    description: Monthly sales KPI summary.
+
+    columns:
+
+      - name: DATE_KEY
+        tests:
+          - not_null
+
+      - name: TOTAL_REVENUE
+        tests:
+          - not_null
+
+      - name: TOTAL_ORDERS
+        tests:
+          - not_null

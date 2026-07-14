@@ -47,3 +47,6 @@ models:
       facts:
         +schema: GOLD
         +materialized: table
+      reporting:
+        +schema: GOLD
+        +materialized: table

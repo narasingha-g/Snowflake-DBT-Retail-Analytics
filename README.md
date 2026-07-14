@@ -11,34 +11,34 @@ This project demonstrates the design and implementation of a modern data warehou
 
 ## Architecture
 Source CSV Files
-|
-|
-v
+        |
+        |
+        v
 +----------------+
-| Snowflake |
-| Bronze Layer |
-| RAW Schema |
+| Snowflake      |
+| Bronze Layer   |
+| RAW Schema     |
 +----------------+
-|
-|
-v
+        |
+        |
+        v
 +----------------+
-| dbt Models |
-| Silver Layer |
-| STAGING |
-| INTERMEDIATE |
+| dbt Models     |
+| Silver Layer   |
+| STAGING        |
+| INTERMEDIATE   |
 +----------------+
-|
-|
-v
+        |
+        |
+        v
 +----------------+
-| Gold Layer |
-| Dimensions |
-| Facts |
+| Gold Layer     |
+| Dimensions     |
+| Facts          |
 +----------------+
-|
-|
-v
+        |
+        |
+        v
 Analytics / BI Reporting
 
 
@@ -184,14 +184,14 @@ Before running the project, ensure:
 
 ## Install dbt Packages
 
-Install dependencies defined in `packages.yml`:
+- Install dependencies defined in `packages.yml`:
+- dbt deps
 
-bash
-dbt deps
+- Verify dbt can connect successfully to Snowflake :
+- dbt debug
 
-Verify dbt can connect successfully to Snowflake :
-dbt debug
-Execute all dbt transformations (Run dbt Models):
-dbt run
-Execute dbt data validation tests :
-dbt test
+- Execute all dbt transformations (Run dbt Models):
+- dbt run
+
+- Execute dbt data validation tests :
+- dbt test

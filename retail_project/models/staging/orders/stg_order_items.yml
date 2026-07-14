@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: stg_order_items
+    description: "Standardized order item details."
+
+    columns:
+      - name: ORDER_ID
+        description: "Order identifier."
+        tests:
+          - not_null
+
+      - name: ORDER_ITEM_ID
+        description: "Line item number within an order."
+
+      - name: PRODUCT_ID
+        description: "Product identifier."
+        tests:
+          - not_null
+
+      - name: SELLER_ID
+        description: "Seller identifier."
+        tests:
+          - not_null
+
+      - name: SHIPPING_LIMIT_DATE
+        description: "Shipping deadline."
+
+      - name: PRICE
+        description: "Price of the product."
+
+      - name: FREIGHT_VALUE
+        description: "Shipping cost."

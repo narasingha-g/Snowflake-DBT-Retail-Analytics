@@ -1,0 +1,59 @@
+{{ config(
+    materialized='table'
+) }}
+
+SELECT
+
+    dc.CUSTOMER_KEY,
+    dc.CUSTOMER_ID,
+    dc.CUSTOMER_CITY,
+    dc.CUSTOMER_STATE,
+
+    COUNT(DISTINCT fs.ORDER_ID) AS TOTAL_ORDERS,
+
+    COUNT(DISTINCT fs.PRODUCT_KEY) AS TOTAL_PRODUCTS,
+
+    ROUND(SUM(fs.TOTAL_ITEM_AMOUNT),2) AS TOTAL_SPENT,
+
+    ROUND(AVG(fs.TOTAL_ITEM_AMOUNT),2) AS AVG_ORDER_VALUE,
+
+    MIN(fs.ORDER_PURCHASE_TIMESTAMP) AS FIRST_PURCHASE_DATE,
+
+    MAX(fs.ORDER_PURCHASE_TIMESTAMP) AS LAST_PURCHASE_DATE,
+
+    ROUND(AVG(fs.DELIVERY_DAYS),2) AS AVG_DELIVERY_DAYS,
+
+    SUM(
+        CASE
+            WHEN fs.LATE_DELIVERY THEN 1
+            ELSE 0
+        END
+    ) AS LATE_DELIVERIES,
+
+    CASE
+
+        WHEN SUM(fs.TOTAL_ITEM_AMOUNT) >= 5000
+            THEN 'PLATINUM'
+
+        WHEN SUM(fs.TOTAL_ITEM_AMOUNT) >= 2000
+            THEN 'GOLD'
+
+        WHEN SUM(fs.TOTAL_ITEM_AMOUNT) >= 1000
+            THEN 'SILVER'
+
+        ELSE 'BRONZE'
+
+    END AS CUSTOMER_SEGMENT
+
+FROM {{ ref('dim_customers') }} dc
+
+LEFT JOIN {{ ref('fact_sales') }} fs
+
+ON dc.CUSTOMER_KEY = fs.CUSTOMER_KEY
+
+GROUP BY
+
+    dc.CUSTOMER_KEY,
+    dc.CUSTOMER_ID,
+    dc.CUSTOMER_CITY,
+    dc.CUSTOMER_STATE

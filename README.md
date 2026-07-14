@@ -45,14 +45,14 @@ Analytics / BI Reporting
 
 # Technology Stack
 
-| Component | Technology |
-|-----------|------------|
+| Component            | Technology|
+|----------------------|-----------|
 | Cloud Data Warehouse | Snowflake |
-| Transformation | dbt Core |
-| Programming | SQL |
-| Data Quality | dbt Tests |
-| Package Management | dbt-utils |
-| Version Control | GitHub |
+| Transformation       | dbt Core  |
+| Programming          | SQL       |     
+| Data Quality         | dbt Tests |
+| Package Management   | dbt-utils |
+| Version Control      | GitHub    |
 
 
 # Current Implementation

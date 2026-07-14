@@ -1,0 +1,35 @@
+version: 2
+
+models:
+
+  - name: customer_360
+    description: Customer 360 analytics mart.
+
+    columns:
+
+      - name: CUSTOMER_KEY
+        tests:
+          - not_null
+          - unique
+
+      - name: CUSTOMER_ID
+        tests:
+          - not_null
+
+      - name: TOTAL_ORDERS
+        tests:
+          - not_null
+
+      - name: TOTAL_SPENT
+        tests:
+          - not_null
+
+      - name: CUSTOMER_SEGMENT
+        tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - PLATINUM
+                  - GOLD
+                  - SILVER
+                  - BRONZE

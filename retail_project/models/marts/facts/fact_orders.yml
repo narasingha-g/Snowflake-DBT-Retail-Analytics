@@ -40,3 +40,19 @@ models:
               arguments:
                 to: ref('dim_date')
                 field: DATE_KEY
+      - name: PRICE 
+        tests:
+           - dbt_utils.expression_is_true:
+               arguments:
+                 expression: ">=0"
+      - name: FREIGHT_VALUE
+        tests:
+            - dbt_utils.expression_is_true:
+                arguments:
+                  expression: ">=0"
+      
+      - name: PAYMENT_VALUE
+        tests:
+            - dbt_utils.expression_is_true:
+                arguments:
+                   expression: ">=0"

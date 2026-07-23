@@ -9,6 +9,11 @@ models:
         tests:
           - unique
           - not_null
+          
+          - relationships:
+             arguments:
+               to: ref('dim_sellers')
+               field:  SELLER_KEY
 
       - name: SELLER_ID
         tests:
